@@ -1,0 +1,42 @@
+﻿.table-content{
+    height: 500px;
+    overflow: auto;
+}
+
+.main-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .main-table th {
+        border: 1px solid #000;
+    }
+
+    .main-table td {
+        border: 1px solid #000;
+    }
+
+.uncheck {
+    width: 24px;
+    background: url('/Contents/images/uncheck.png') center no-repeat;
+}
+
+.select{
+    background-color: #00ff21;
+}
+
+.tick {
+    background-color: #00ff21;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.text-center{
+    text-align: center;
+}
+
+#dialog{
+    display: none;
+}
