@@ -1,0 +1,15 @@
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\bin\Debug\MISA.BL.dll
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\bin\Debug\MISA.BL.pdb
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\bin\Debug\MISA.DL.dll
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\bin\Debug\MISA.Entities.dll
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\bin\Debug\EntityFramework.dll
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\bin\Debug\MISA.DL.pdb
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\bin\Debug\MISA.DL.dll.config
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\bin\Debug\MISA.Entities.pdb
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\bin\Debug\MISA.Entities.dll.config
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\bin\Debug\EntityFramework.xml
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\obj\Debug\MISA.BL.csprojAssemblyReference.cache
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\obj\Debug\MISA.BL.csproj.CoreCompileInputs.cache
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\obj\Debug\MISA.BL.csproj.CopyComplete
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\obj\Debug\MISA.BL.dll
+C:\Users\vdthang\Source\Workspaces\MISA.Training\FresherTraining\MISA.BL\obj\Debug\MISA.BL.pdb

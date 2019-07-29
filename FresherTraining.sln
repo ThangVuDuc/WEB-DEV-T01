@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDevT01", "..\WebDevT01\WebDevT01.csproj", "{A511AADF-22E9-4DBA-984E-5C6FC27D3C11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISA.Entities", "MISA.Entities\MISA.Entities.csproj", "{CF4CA892-E0D5-4D41-A99B-D3284C36116F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISA.DL", "MISA.DL\MISA.DL.csproj", "{4FBE9D1E-304F-44B7-8560-A4927F5DDE65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISA.BL", "MISA.BL\MISA.BL.csproj", "{B0206FA4-2897-4A3E-BB15-092F64DB37AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A511AADF-22E9-4DBA-984E-5C6FC27D3C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A511AADF-22E9-4DBA-984E-5C6FC27D3C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A511AADF-22E9-4DBA-984E-5C6FC27D3C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A511AADF-22E9-4DBA-984E-5C6FC27D3C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF4CA892-E0D5-4D41-A99B-D3284C36116F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF4CA892-E0D5-4D41-A99B-D3284C36116F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF4CA892-E0D5-4D41-A99B-D3284C36116F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF4CA892-E0D5-4D41-A99B-D3284C36116F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FBE9D1E-304F-44B7-8560-A4927F5DDE65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FBE9D1E-304F-44B7-8560-A4927F5DDE65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FBE9D1E-304F-44B7-8560-A4927F5DDE65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FBE9D1E-304F-44B7-8560-A4927F5DDE65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0206FA4-2897-4A3E-BB15-092F64DB37AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0206FA4-2897-4A3E-BB15-092F64DB37AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0206FA4-2897-4A3E-BB15-092F64DB37AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0206FA4-2897-4A3E-BB15-092F64DB37AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F2832AE-61C6-484B-B5FA-8EF2B975ED00}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/misafreshertraining
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ..\\WebDevT01\\WebDevT01.csproj
+		SccProjectName1 = ../../../../../../MISA.Training/WebDevT01
+		SccLocalPath1 = ..\\WebDevT01
+		SccProjectUniqueName2 = MISA.Entities\\MISA.Entities.csproj
+		SccProjectName2 = MISA.Entities
+		SccLocalPath2 = MISA.Entities
+		SccProjectUniqueName3 = MISA.DL\\MISA.DL.csproj
+		SccProjectName3 = MISA.DL
+		SccLocalPath3 = MISA.DL
+		SccProjectUniqueName4 = MISA.BL\\MISA.BL.csproj
+		SccProjectName4 = MISA.BL
+		SccLocalPath4 = MISA.BL
+	EndGlobalSection
+EndGlobal

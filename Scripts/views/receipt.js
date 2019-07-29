@@ -14,62 +14,7 @@ class Ref extends Base {
             'jsObject': 123456,
             'name': 'Vũ Đức Thắng'
         }, this.RowOnClick);
-        //$(document).on('click', 'button.delete', { 'jsObject': this }, this.ClickButton);
-        $(document).on('click', 'button.delete', this.ClickButton.bind(this));
-        $(document).on('click', 'button.add-new', this.ShowDialogAdd);
-        $(document).on('click', '.uncheck', this.TickRow);
-        $(document).on('click', '#save', this.SaveRef.bind(this));
-    }
-
-    /**
-     * Hàm thực hiện mở dialog thêm mới
-     * Người tạo: VDTHANG
-     * Ngày tạo: 24/07/2019
-     * Người sửa: NVMANH
-     * Ngày sửa: 22/07/2019
-     * Nội dung sửa: sửa lại nội dung thông báo
-     * */
-    ShowDialogAdd() {
-        $("#dialog").dialog({
-            modal: true,
-            height: 500,
-            width: 300,
-            resizable: false,
-            dialogClass: "dialog-add",
-        });
-    }
-
-    /**
-     * Hàm thực thêm mới phiếu hóa đơn
-     * Người tạo: VDTHANG
-     * Ngày tạo: 24/07/2019
-     * */
-    SaveRef() {
-        var me = this;
-        var inputs = $('#dialog input');
-        var object = {};
-        $.each(inputs, function (index, item) {
-            var propertyName = item.getAttribute('property');
-            var propertyValue = $(this).val();
-            object[propertyName] = propertyValue;
-        });
-        $.ajax({
-            method: 'POST',
-            url: '/refs',
-            data: JSON.stringify(object),
-            contentType: "application/json; charset=utf-8",
-            success: function (res) {
-                $('#dialog').dialog('close');
-                me.loadData();
-            },
-            error: function () {
-                alert("Hệ thống đang bị lỗi! Vui lòng liên hệ MISA!");
-            }
-        })
-    }
-
-    TickRow() {
-        $(this).parent().addClass('tick');
+        $(document).on('click', 'button.delete', {'jsObject': this} ,this.ClickButton);
     }
 
     /**
@@ -84,30 +29,27 @@ class Ref extends Base {
     RowOnClick(event) {
         var jsObject = event.data['jsObject'];
         var name = event.data['name'];
+        $('.main-table tbody tr').removeClass('selected');
+        $(this).addClass('selected');
         $('button.delete').removeAttr('disabled');
-        $('.main-table tbody tr').removeClass('select');
-        $(this).addClass('select');
     }
 
     ClickButton(event) {
-        //var me = event.data['jsObject'];
-        var me = this;
-        //me.DemoParam(1234456, "NVManh");
-        var listRow = $('.select,.tick[recordid]');
-        var listID = [];
-        $.each(listRow, function (index, item) {
-            listID.push(item.getAttribute('recordid'));
-        });
+        var me = event.data['jsObject'];
+        var listRefno = [];
+        var refno = $('.selected .refno').text();
+        listRefno.push(refno);
+       
         $.ajax({
             method: 'DELETE',
             url: '/refs',
             contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(listID),
+            data: JSON.stringify(listRefno),
             success: function (res) {
                 me.loadData();
             },
             error: function (res) {
-                alert("Hệ thống đang bị lỗi! Vui lòng liên hệ MISA!");
+                alert("Chức năng xóa đang bị lỗi! Vui lòng liên hệ MISA")
             }
         });
     }
@@ -117,7 +59,9 @@ class Ref extends Base {
         var name = arguments[1];
         debugger
     }
-
+    //loadData() {
+    //    super.loadData();
+    //}
 }
 
 var refJS = new Ref();
