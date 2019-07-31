@@ -21,7 +21,7 @@ namespace MISA.DL
         //Người tạo: VDThang 29/07/2019
         public void AddRef(Ref _ref)
         {
-            _ref.refID = Guid.NewGuid();
+            _ref.RefID = Guid.NewGuid();
             db.Refs.Add(_ref);
             db.SaveChanges();
         }
@@ -32,7 +32,7 @@ namespace MISA.DL
         {
             foreach (var id in ids)
             {
-                var refitem = db.Refs.Where(p => p.refID == id).FirstOrDefault();
+                var refitem = db.Refs.Where(p => p.RefID == id).FirstOrDefault();
                 db.Refs.Remove(refitem);
             }
             db.SaveChanges();
@@ -42,14 +42,22 @@ namespace MISA.DL
         //Người tạo: VDThang 29/07/2019
         public void UpdateRef(Ref _ref)
         {
-            var refFind = db.Refs.Where(n => n.refID == _ref.refID).SingleOrDefault();
-            refFind.refNo = _ref.refNo;
-            refFind.refType = _ref.refType;
-            refFind.refDate = _ref.refDate;
-            refFind.reason = _ref.reason;
-            refFind.total = _ref.total;
-            refFind.contactName = _ref.contactName;
+            var refFind = db.Refs.Where(n => n.RefID == _ref.RefID).SingleOrDefault();
+            refFind.RefNo = _ref.RefNo;
+            refFind.RefType = _ref.RefType;
+            refFind.RefDate = _ref.RefDate;
+            refFind.Reason = _ref.Reason;
+            refFind.Total = _ref.Total;
+            refFind.ContactName = _ref.ContactName;
             db.SaveChanges();
+        }
+
+        //Hàm thực hiện lấy các bản ghi chi tiết cho phiếu thu tương ứng
+        //Người tạo: VDThang 31/07/2019
+        public IEnumerable<RefDetail> GetRefDetail(Guid _refID)
+        {
+            var _listRef = db.RefDetails.Where(p => p.RefID == _refID).ToList();
+            return _listRef;
         }
 
     }

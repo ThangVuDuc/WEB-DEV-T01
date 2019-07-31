@@ -1,30 +1,23 @@
-﻿namespace MISA.Entities
+namespace MISA.Entities.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using MISA.Entities;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MISA.Entities.WebDevT01Context>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(MISA.Entities.WebDevT01Context context)
         {
-            context.Refs.AddOrUpdate(p => p.refID,
-                new Ref()
-                {
-                    refDate = new DateTime(2019,05,06), 
-                    refNo = "PT0001",
-                    refType = "Phiếu thu tiền mặt",
-                    contactName = "Vũ Đức Thắng",
-                    reason = "Thu nợ"
-                }
-                );
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data.
         }
     }
 }

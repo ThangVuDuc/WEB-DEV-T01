@@ -1,5 +1,5 @@
 ﻿.table-content {
-    height: 500px;
+    height: 420px;
     overflow: auto;
 }
 
@@ -7,10 +7,6 @@
     width: 100%;
     border-collapse: collapse;
 }
-
-    .main-table tbody tr:nth-child(even) {
-        background-color: #d0d0d0;
-    }
 
     .main-table th {
         border: 1px solid #000;
@@ -20,6 +16,44 @@
         border: 1px solid #000;
     }
 
-.selected {
-    background-color: #00ff90 !important;
+.uncheck {
+    width: 24px;
+    background: url('/Contents/images/uncheck.png') center no-repeat;
 }
+
+.select {
+    background-color: #00ff21;
+}
+
+.tick {
+    background-color: #00ff21;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#dialog {
+    display: none;
+}
+
+.hide-button {
+    display: none;
+}
+
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .detail-table th {
+        border: 1px solid #000;
+    }
+
+    .detail-table td {
+        border: 1px solid #000;
+    }

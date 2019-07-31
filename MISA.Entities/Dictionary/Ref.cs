@@ -7,12 +7,12 @@ namespace MISA.Entities
 {
     public class Ref
     {
-        public Guid refID { get; set; }
-        public DateTime refDate { get; set; }
-        public string refNo { get; set; }
-        public string refType { get; set; }
-        public decimal total { get; set; }
-        public string contactName { get; set; }
-        public string reason { get; set; }
+        public Guid RefID { get; set; }
+        public DateTime RefDate { get; set; }
+        public string RefNo { get; set; }
+        public string RefType { get; set; }
+        public decimal Total { get; set; }
+        public string ContactName { get; set; }
+        public string Reason { get; set; }
     }
 }

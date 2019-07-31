@@ -19,6 +19,8 @@ namespace WebDevT01.Models
         {
         }
 
-        public System.Data.Entity.DbSet<WebDevT01.Models.Ref> Refs { get; set; }
+        public System.Data.Entity.DbSet<MISA.Entities.RefDetail> RefDetails { get; set; }
+
+        public System.Data.Entity.DbSet<MISA.Entities.Ref> Refs { get; set; }
     }
 }

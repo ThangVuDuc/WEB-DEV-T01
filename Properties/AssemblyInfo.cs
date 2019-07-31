@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FresherTraining")]
+[assembly: AssemblyTitle("WebDevT01")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FresherTraining")]
+[assembly: AssemblyProduct("WebDevT01")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8cb8f42a-c714-4668-92df-d3d62c937898")]
+[assembly: Guid("a511aadf-22e9-4dba-984e-5c6fc27d3c11")]
 
 // Version information for an assembly consists of the following four values:
 //

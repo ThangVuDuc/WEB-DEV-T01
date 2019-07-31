@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MISA.DL;
+using MISA.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,86 +10,116 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using WebDevT01.Models;
+using WebDevT01.Properties;
 
 namespace WebDevT01.Controllers
 {
     public class RefsController : ApiController
     {
-        private WebDevT01Context db = new WebDevT01Context();
-
+        private RefDL _refDL = new RefDL();
+        /// <summary>
+        /// Service thực hiện lấy dữ liệu bảng phiếu thu
+        /// Người tạo VDThang 29/07/2019
+        /// </summary>
+        /// <returns>Dữ liệu bảng phiếu thu</returns>
         [Route("refs")]
         [HttpGet]
-        public IEnumerable<Ref> GetRefs()
+        public AjaxResult GetRefs()
         {
-            return db.Refs;
-        }
-
-        // GET: api/Refs/5
-        [ResponseType(typeof(Ref))]
-        public IHttpActionResult GetRef(Guid id)
-        {
-            Ref @ref = db.Refs.Find(id);
-            if (@ref == null)
+            var ajaxResult = new AjaxResult();
+            try
             {
-                return NotFound();
-            }
-
-            return Ok(@ref);
-        }
-
-        [Route("refs")]
-        [HttpPut]
-        public int Put([FromBody]Ref _ref)
-        {
-            var refFind = db.Refs.Where(n => n.refID == _ref.refID).SingleOrDefault();
-            if (refFind == null)
+                ajaxResult.Data = _refDL.GetData();
+            }catch(Exception ex)
             {
-                return -1;
+                ajaxResult.Data = ex;
+                ajaxResult.Success = false;
+                ajaxResult.Message = Resources.MessageVN;
             }
-            refFind.refNo = _ref.refNo;
-            refFind.refType = _ref.refType;
-            refFind.refDate = _ref.refDate;
-            refFind.reason = _ref.reason;
-            db.SaveChanges();
-            return 1;
+            return ajaxResult;
         }
 
-
+        /// <summary>
+        /// Service thực hiện thêm mới dữ liệu phiếu thu
+        /// Người tạo VDThang 29/07/2019
+        /// </summary>
+        /// <param name="_ref"></param>
         [Route("refs")]
         [HttpPost]
-        public void Post([FromBody]Ref _ref)
+        public AjaxResult Post([FromBody]Ref _ref)
         {
-            _ref.refID = Guid.NewGuid();
-            db.Refs.Add(_ref);
-            db.SaveChanges();
+            var ajaxResult = new AjaxResult();
+            try
+            {
+                _refDL.AddRef(_ref);
+            }
+            catch (Exception ex)
+            {
+                ajaxResult.Data = ex;
+                ajaxResult.Success = false;
+                ajaxResult.Message = Resources.MessageVN;
+            }
+            return ajaxResult;
         }
 
+        /// <summary>
+        /// Hàm thực hiện xóa phiếu thu
+        /// Người tạo VDThang 29/07/2019
+        /// </summary>
+        /// <param name="ids"></param>
         [Route("refs")]
         [HttpDelete]
-        public void DeleteMultiple([FromBody]List<Guid> ids)
+        public AjaxResult DeleteMultiple([FromBody]List<Guid> ids)
         {
-            foreach (var id in ids)
+            var ajaxResult = new AjaxResult();
+            try
             {
-                var refitem = db.Refs.Where(p => p.refID == id).FirstOrDefault();
-                db.Refs.Remove(refitem);
+                _refDL.DeleteRef(ids);
             }
-            db.SaveChanges();
-
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            catch (Exception ex)
             {
-                db.Dispose();
+                ajaxResult.Data = ex;
+                ajaxResult.Success = false;
+                ajaxResult.Message = Resources.MessageVN;
             }
-            base.Dispose(disposing);
+            return ajaxResult;
         }
+        /// <summary>
+        /// Hàm thực hiện lấy phiếu thu theo trường id
+        /// Người tạo VDThang 29/07/2019
+        /// </summary>
+        /// <param name="id">Phiếu thu có id tương ứng</param>
+        /// <returns></returns>
+        //[Route("refs/{id}")]
+        //[HttpGet]
+        //public Ref GetRefs(Guid id)
+        //{
+        //    var refitem = db.Refs.Where(p => p.refID == id).FirstOrDefault();
+        //    return refitem;
+        //}
 
-        private bool RefExists(Guid id)
+        ///// <summary>
+        ///// Hàm thực hiện sửa phiếu thu
+        ///// Người tạo VDThang 29/07/2019
+        ///// </summary>
+        ///// <param name="_ref"></param>
+        ///// <returns></returns>
+        [Route("refs")]
+        [HttpPut]
+        public AjaxResult Put([FromBody]Ref _ref)
         {
-            return db.Refs.Count(e => e.refID == id) > 0;
+            var ajaxResult = new AjaxResult();
+            try
+            {
+                _refDL.UpdateRef(_ref);
+            }
+            catch (Exception ex)
+            {
+                ajaxResult.Data = ex;
+                ajaxResult.Success = false;
+                ajaxResult.Message = Resources.MessageVN;
+            }
+            return ajaxResult;
         }
     }
 }
