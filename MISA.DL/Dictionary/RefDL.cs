@@ -12,7 +12,14 @@ namespace MISA.DL
         private WebDevT01Context db = new WebDevT01Context();
         //Hàm thực hiện lấy dữ liệu data các phiếu thu
         //Người tạo: VDThang 29/07/2019
-        public IEnumerable<Ref> GetData()
+        public IEnumerable<Ref> GetData(int _pageIndex, int _pageSize)
+        {
+            return db.Refs.OrderBy(p => p.RefNo)
+                .Skip((_pageIndex - 1) * _pageSize)
+                .Take(_pageSize);
+        }
+
+        public IEnumerable<Ref> GetAllData()
         {
             return db.Refs;
         }

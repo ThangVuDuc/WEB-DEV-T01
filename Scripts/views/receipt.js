@@ -26,8 +26,54 @@ class Ref extends Base {
         $(document).on('click', 'button.view', this.ShowDialogView.bind(this));
         $(document).on('click', 'button.duplicate', this.ShowDialogDuplicate.bind(this));
 
-        $(document).on('input', '#dialog input[property="total"]', this.FomartCurrency)
+        $(document).on('input', '#dialog input[property="total"]', this.FomartCurrency);
+        //$(document).on('click', '.get-paging', this.GetPaging.bind(this));
+        $(document).on('keyup', '.page-index', this.GetPaging.bind(this));
+
+        $(document).on('click', '#search', this.SearchTable);
     }
+
+    /**
+     * Hàm thực hiện tìm kiếm
+     * */
+    SearchTable() {
+        var searchValue = $('#search-value').val();
+        var searchType = $('#search-type option:selected').val();
+        $.ajax({
+            method: 'GET',
+            url: '/refs/searching/{0}/{1}'.format(searchType, searchValue),
+            success: function (res) {
+                debugger
+            }
+        })
+    }
+
+    /**
+     *Hàm thực hiện lấy dữ liệu phân trang
+     * Người tạo VDThang
+     * Ngày tạo: 05/08/2019
+     * */
+
+    GetPaging(event) {
+        var me = this;
+        if (event.keyCode === 13) {
+            var pageIndex = $('.page-index').val();
+            var pageSize = $('.page-size').val();
+            $.ajax({
+                method: 'Get',
+                url: '/refs/' + pageIndex + '/' + pageSize,
+                success: function (res) {
+                    var data = res.Data;
+                    var fields = $('.main-table th[fieldName]');
+                    var target = '.main-table tbody';
+                    var id = 'RefID';
+                    me.bindingTableData(fields, data, target, id);
+                }
+            });
+        }
+        
+    }
+
     /**
      * Hàm thực hiện mở dialog nhân bản phiếu thu
      * Người tạo: VDThang
@@ -212,34 +258,11 @@ class Ref extends Base {
             url: '/refdetails/' + refid,
             success: function (res) {
                 if (res.Success) {
-                    debugger
                     var fields = $('.detail-table th[fieldName]');
-                    $('.detail-table tbody').empty();
-                    $.each(res.Data, function (index, item) {
-                        var rowHTML = $('<tr></tr>').data("recordid", item["RefDetailID"]);
-                        $.each(fields, function (fieldIndex, fieldItem) {
-                            var fieldName = fieldItem.getAttribute('fieldName');
-                            var fieldValue = item[fieldName];
-                            var cls = 'text-left';
-                            var type = $.type(fieldValue);
-                            switch (type) {
-                                case "number":
-                                    fieldValue = fieldValue.formatMoney();
-                                    cls = 'text-right';
-                                    break;
-                                case "date":
-                                    fieldValue = fieldValue.formatddMMyyyy();
-                                    cls = 'text-center';
-                                    break;
-                            }
-                            if (fieldName) {
-                                rowHTML.append('<td class = "{1}">{0}</td>'.format(fieldValue, cls));
-                            } else {
-                                rowHTML.append('<td class = "{0}"></td>'.format("uncheck"));
-                            }
-                        });
-                        $('.detail-table tbody').append(rowHTML);
-                    });
+                    var data = res.Data;
+                    var target = '.detail-table tbody';
+                    var id = 'RefDetailID';
+                    me.bindingTableData(fields, data, target, id);
                 } else {
                     alert(res.Message);
                 }

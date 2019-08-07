@@ -1,4 +1,21 @@
-﻿.header{
+﻿
+
+body, p{
+    background-color: red;
+    font-size: 30px;
+}
+
+p{
+    color: green;
+}
+
+#misa{
+    color: red;
+    font-weight: bold;
+}
+
+
+.header{
     height: 70px;
     width: calc(100% - 142px);
     position: absolute;

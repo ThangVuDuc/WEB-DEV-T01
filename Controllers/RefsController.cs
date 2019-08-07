@@ -1,4 +1,5 @@
-﻿using MISA.DL;
+﻿using MISA.BL;
+using MISA.DL;
 using MISA.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebDevT01.Properties;
@@ -17,19 +19,21 @@ namespace WebDevT01.Controllers
     public class RefsController : ApiController
     {
         private RefDL _refDL = new RefDL();
+        private RefBL _refBL = new RefBL();
         /// <summary>
         /// Service thực hiện lấy dữ liệu bảng phiếu thu
         /// Người tạo VDThang 29/07/2019
         /// </summary>
         /// <returns>Dữ liệu bảng phiếu thu</returns>
-        [Route("refs")]
+        [Route("refs/{pageIndex}/{pageSize}")]
         [HttpGet]
-        public AjaxResult GetRefs()
+        public async Task<AjaxResult> GetRefs([FromUri] int pageIndex, int pageSize)
         {
+            await Task.Delay(1000);
             var ajaxResult = new AjaxResult();
             try
             {
-                ajaxResult.Data = _refDL.GetData();
+                ajaxResult.Data = _refDL.GetData(pageIndex, pageSize);
             }catch(Exception ex)
             {
                 ajaxResult.Data = ex;
@@ -40,10 +44,35 @@ namespace WebDevT01.Controllers
         }
 
         /// <summary>
+        /// Hàm thực hiện tìm kiếm dữ liệu phiếu thu
+        /// </summary>
+        /// <param name="searchType"></param>
+        /// <param name="searchValue"></param>
+        /// <returns>Danh sách kết quả phù hợp tìm kiếm</returns>
+        /// Created by VDThang 07/08/2019
+        [Route("refs/searching/{searchType}/{searchValue}")]
+        [HttpGet]
+        public AjaxResult SearchRef([FromUri] string searchType, string searchValue)
+        {
+            var ajaxResult = new AjaxResult();
+            try
+            {
+                ajaxResult.Data = _refBL.SearchRef(searchType, searchValue);
+            }
+            catch (Exception ex)
+            {
+                ajaxResult.Data = ex;
+                ajaxResult.Success = false;
+                ajaxResult.Message = Resources.MessageVN;
+            }
+            return ajaxResult;
+        }
+
+        /// <summary>
         /// Service thực hiện thêm mới dữ liệu phiếu thu
-        /// Người tạo VDThang 29/07/2019
         /// </summary>
         /// <param name="_ref"></param>
+        /// Created by VDThang 29/07/2019
         [Route("refs")]
         [HttpPost]
         public AjaxResult Post([FromBody]Ref _ref)

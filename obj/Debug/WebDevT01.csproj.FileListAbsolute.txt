@@ -76,5 +76,3 @@ C:\Users\vdthang\Source\Workspaces\MISA.Training\WebDevT01\obj\Debug\WebDevT01.d
 C:\Users\vdthang\Source\Workspaces\MISA.Training\WebDevT01\obj\Debug\WebDevT01.pdb
 C:\Users\vdthang\source\Workspaces\MISA.Training\WebDevT01\obj\Debug\WebDevT01.Properties.Resources.resources
 C:\Users\vdthang\source\Workspaces\MISA.Training\WebDevT01\obj\Debug\WebDevT01.csproj.GenerateResource.cache
-D:\GitHub\Web-Dev-Training\WEB-DEV-T01\obj\Debug\WebDevT01.dll
-D:\GitHub\Web-Dev-Training\WEB-DEV-T01\obj\Debug\WebDevT01.pdb

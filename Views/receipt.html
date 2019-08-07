@@ -339,6 +339,18 @@
                             <span>Lấy dữ liệu</span>
                         </div>
                     </div>
+
+                    <select id="search-type">
+                        <option value="1">Ngày</option>
+                        <option value="2">Số chứng từ</option>
+                        <option value="3">Loại chứng từ</option>
+                        <option value="4">Tổng tiền</option>
+                        <option value="5">Đối tượng nộp/nhận</option>
+                        <option value="6">Lý do</option>
+                    </select>
+
+                    <input type="text" id="search-value"/>
+                    <button id="search">Tìm kiếm</button>
                 </div>
             </div>
             <div class="table-content">
@@ -366,6 +378,14 @@
                 Lý do<input property="reason"/><br />
                 <button id="save">Lưu</button>
             </div>
+            <div class="contain-paging">
+                Trang<input class="page-index" value="1" type="number"/>
+                Kích thước <input class="page-size" value="7"/>
+                <button class="get-paging">
+                    Lấy Phân Trang
+                </button>
+            </div>
+
             <div class="table-detail">
                 <table class="detail-table">
                     <thead>
@@ -377,6 +397,9 @@
                     </thead>
                     <tbody></tbody>
                 </table>
+            </div>
+            <div id="loadData">
+
             </div>
         </div>
     </div>

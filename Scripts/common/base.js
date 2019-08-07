@@ -5,9 +5,11 @@
 
     getData() {
         var fakeData = [];
+        var pageIndex = $('.page-index').val();
+        var pageSize = $('.page-size').val();
         $.ajax({
             method: 'GET',
-            url: '/refs',
+            url: '/refs/{0}/{1}'.format(pageIndex, pageSize),
             dataType: 'json',
             async: false,
             success: function (res) {
@@ -25,35 +27,11 @@
         var me = this;
         var data = this.getData();
         var fields = $('.main-table th[fieldName]');
-        $('.main-table tbody').empty();
-        $.each(data, function (index, item) {
-            var rowHTML = $('<tr></tr>').data("recordid", item["RefID"]);
-            $.each(fields, function (fieldIndex, fieldItem) {
-                var fieldName = fieldItem.getAttribute('fieldName');
-                var fieldValue = item[fieldName];
-                var cls = 'text-left';
-                if (fieldName == "refDate") {
-                    fieldValue = new Date(fieldValue);
-                }
-                var type = $.type(fieldValue);
-                switch (type) {
-                    case "number":
-                        fieldValue = fieldValue.formatMoney();
-                        cls = 'text-right';
-                        break;
-                    case "date":
-                        fieldValue = fieldValue.formatddMMyyyy();
-                        cls = 'text-center';
-                        break;
-                }
-                if (fieldName) {
-                    rowHTML.append('<td class = "{1}">{0}</td>'.format(fieldValue, cls));
-                } else {
-                    rowHTML.append('<td class = "{0}"></td>'.format("uncheck"));
-                }
-            });
-            $('.main-table tbody').append(rowHTML);
-        });
+        var target = '.main-table tbody';
+        var id = 'RefID';
+        me.bindingTableData(fields, data, target, id);
+        //Hàm delay con quay load data
+        $("#loadData").hide();
     }
 
     //Thực hiện format lại định dạng tiền khi người dùng nhập liệu vào ô input "Số tiền"
@@ -81,5 +59,39 @@
         if (valueInput == "") {
             $(this).val("0");
         }
+    }
+
+    //Thực hiện ghi dữ liệu ra bảng
+    //Người tạo VDThang 05/08/2019
+    bindingTableData(fields, data, target, id) {
+        $(target).empty();
+        $.each(data, function (index, item) {
+            var rowHTML = $('<tr></tr>').data("recordid", item[id]);
+            $.each(fields, function (fieldIndex, fieldItem) {
+                var fieldName = fieldItem.getAttribute('fieldName');
+                var fieldValue = item[fieldName];
+                var cls = 'text-left';
+                if (fieldName == "refDate") {
+                    fieldValue = new Date(fieldValue);
+                }
+                var type = $.type(fieldValue);
+                switch (type) {
+                    case "number":
+                        fieldValue = fieldValue.formatMoney();
+                        cls = 'text-right';
+                        break;
+                    case "date":
+                        fieldValue = fieldValue.formatddMMyyyy();
+                        cls = 'text-center';
+                        break;
+                }
+                if (fieldName) {
+                    rowHTML.append('<td class = "{1}">{0}</td>'.format(fieldValue, cls));
+                } else {
+                    rowHTML.append('<td class = "{0}"></td>'.format("uncheck"));
+                }
+            });
+            $(target).append(rowHTML);
+        });
     }
 }

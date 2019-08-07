@@ -1,5 +1,5 @@
 ﻿.table-content {
-    height: 420px;
+    height: 380px;
     overflow: auto;
 }
 
@@ -57,3 +57,15 @@
     .detail-table td {
         border: 1px solid #000;
     }
+
+#loadData {
+    /*background-color: #00ff21 !important;*/
+    height: 380px;
+    position: absolute;
+    top: 92px;
+    left: 0;
+    right: 0;
+    background: url('/Contents/images/load-data.gif') no-repeat center #00ff21;
+    background-size: 50px;
+    opacity: 0.5;
+}
